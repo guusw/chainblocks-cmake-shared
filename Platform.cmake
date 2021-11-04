@@ -1,3 +1,5 @@
+# Note: Can't use PLATFORM global since it's used bit the ios-cmake toolchain file
+
 if(IOS)
     if(PLATFORM MATCHES "SIMULATOR.*")
         set(X86_IOS_SIMULATOR ON)
