@@ -62,7 +62,15 @@ if(NOT _ABI)
 endif()
 
 if(VALGRIND)
-    set(_EXTRA_FLAGS ${_EXTRA_FLAGS} "valgrind")
+    list(APPEND _EXTRA_FLAGS "valgrind")
+endif()
+
+if(EMSCRIPTEN)
+    if(EMSCRIPTEN_PTHREADS)
+        list(APPEND _EXTRA_FLAGS "mt")
+    else()
+        list(APPEND _EXTRA_FLAGS "st")
+    endif()
 endif()
 
 set(TARGET_PARTS ${_ARCH} ${_PLATFORM} ${_OS} ${_ABI} ${_EXTRA_FLAGS})
